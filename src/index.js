@@ -1,30 +1,35 @@
+import './reset.css';
 import './style.css';
 
-const todoTasks = [
+const todoList = [
   {
     index: 1,
-    description: 'task 1',
+    description: 'wash the dishes',
     completed: false,
   },
   {
     index: 2,
-    description: 'task 2',
-    completed: false,
-  },
-  {
-    index: 3,
-    description: 'task 3',
+    description: 'complete To Do list project',
     completed: false,
   },
 ];
 
-const taskListElement = document.getElementById('task-list');
-
+const todoListUl = document.querySelector('.todo-list');
 const renderTasks = () => {
-  todoTasks.forEach((task) => {
+  todoList.forEach(({ index, description, completed }) => {
+    const todoId = `todo${index}`;
+    const checked = completed ? 'checked' : '';
+
     const li = document.createElement('li');
-    li.textContent = task.description;
-    taskListElement.appendChild(li);
+    li.classList.add('todo-item');
+
+    li.innerHTML = `
+      <input type="checkbox" ${checked} name="todo" id="${todoId}" />
+      <label for="${todoId}">${description}</label>
+      <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+    `;
+
+    todoListUl.appendChild(li);
   });
 };
 
