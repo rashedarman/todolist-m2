@@ -7,7 +7,26 @@
   </head>
   <body>
     <div class="todo-container">
-      <ul id="task-list"></ul>
+      <div class="todo-header">
+        <h4>Today's To Do</h4>
+        <ion-icon name="sync-outline"></ion-icon>
+      </div>
+      <form action="" class="todo-form">
+        <input type="text" name="todo" placeholder="Add to your list..." />
+        <ion-icon class="move" name="return-down-back-outline"></ion-icon>
+      </form>
+      <ul class="todo-list"></ul>
+      <button class="clear-button">Clear all completed</button>
     </div>
+
+    <!-- Ionicons script -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
   </body>
 </html>

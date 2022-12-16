@@ -1,9 +1,11 @@
 const path = require('path');
+// eslint-disable-next-line import/no-unresolved
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
   devServer: {
+    watchFiles: ['src/*.html'],
     static: './dist',
     open: true,
   },
