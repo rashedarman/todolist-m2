@@ -1,11 +1,5 @@
 <a name="readme-top"></a>
 
-<div align="center">
-  <img src="https://github.com/microverseinc/readme-template/raw/master/murple_logo.png" alt="logo" width="140"  height="auto" />
-  <br/>
-  <h3><b>Microverse README Template</b></h3>
-</div>
-
 # 📗 Table of Contents
 
 - [📖 About the Project](#about-project)
@@ -17,7 +11,7 @@
 - [👥 Authors](#authors)
 - [📝 License](#license)
 
-# 📖 Awesome Books <a name="about-project"></a>
+# 📖 ToDo List <a name="about-project"></a>
 
 <!-- GETTING STARTED -->
 
