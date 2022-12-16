@@ -1,4 +1,5 @@
-import { Todo, TodoList, todoListObj } from './modules/todo-list';
+import { todoListObj } from './modules/local-storage';
+import { Todo, TodoList } from './modules/todo-list';
 import './reset.css';
 import './style.css';
 
@@ -40,8 +41,6 @@ todoListUl.addEventListener('keyup', (e) => {
     const todoId = getTodoIndex(e.target);
     const todoDescription = e.target.value;
     TodoList.update(todoId, todoDescription);
-
-    renderTodos();
   }
 });
 
