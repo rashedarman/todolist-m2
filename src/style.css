@@ -83,7 +83,7 @@ body {
   display: none;
 }
 
-.clear-button {
+.clear-all-btn {
   cursor: pointer;
   color: var(--clr-dark-50);
   background-color: var(--clr-light-100);
@@ -92,7 +92,7 @@ body {
   padding: 0.75rem;
 }
 
-.clear-button:hover {
+.clear-all-btn:hover {
   color: var(--clr-dark-30);
   text-decoration: underline;
 }

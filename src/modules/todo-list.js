@@ -25,6 +25,13 @@ export class TodoList {
     saveTodoObj();
   }
 
+  static toggleCompleted(index) {
+    const todoItem = todoListObj[index - 1];
+    if (!todoItem) return;
+    todoItem.completed = !todoItem.completed;
+    saveTodoObj();
+  }
+
   static updateIndex() {
     todoListObj.forEach((todo, index) => {
       todo.index = index + 1;
@@ -32,8 +39,7 @@ export class TodoList {
     saveTodoObj();
   }
 
-  // I might have use of this function for re-ordering todo items in the next part of the project
-  // static sortByIndex() {
-  //   todoListObj.sort((todo1, todo2) => todo1.index - todo2.index);
-  // }
+  static sortByIndex() {
+    todoListObj.sort((todo1, todo2) => todo1.index - todo2.index);
+  }
 }
