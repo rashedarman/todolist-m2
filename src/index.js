@@ -5,6 +5,7 @@ import './style.css';
 
 const todoListUl = document.querySelector('.todo-list');
 const todoInput = document.querySelector('.todo-input');
+const clearAllBtn = document.querySelector('.clear-all-btn');
 
 const clearElement = (element) => {
   while (element.firstChild) {
@@ -38,6 +39,20 @@ const getTodoIndex = (element) => {
   return todoId;
 };
 
+const clearAllCompleted = () => {
+  const completedTodos = todoListObj.filter((todo) => todo.completed);
+  completedTodos.forEach((todo) => {
+    const index = todoListObj.indexOf(todo);
+    todoListObj.splice(index, 1);
+  });
+
+  TodoList.updateIndex();
+
+  renderTodos();
+};
+
+clearAllBtn.addEventListener('click', clearAllCompleted);
+
 todoInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
     e.preventDefault();
@@ -68,9 +83,14 @@ todoListUl.addEventListener('click', (e) => {
   }
 });
 
-todoListUl.addEventListener('keyup', (e) => {
+todoListUl.addEventListener('change', (e) => {
+  const todoId = getTodoIndex(e.target);
+
+  if (e.target.matches("input[name='completed']")) {
+    TodoList.toggleCompleted(todoId);
+  }
+
   if (e.target.matches("input[name='description']")) {
-    const todoId = getTodoIndex(e.target);
     const todoDescription = e.target.value;
     TodoList.update(todoId, todoDescription);
   }
