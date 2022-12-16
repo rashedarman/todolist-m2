@@ -1,10 +1,42 @@
-import { todoListObj } from './modules/local-storage';
-import { Todo, TodoList } from './modules/todo-list';
+import { todoListObj } from './modules/local-storage.js';
+import { Todo, TodoList } from './modules/todo-list.js';
 import './reset.css';
 import './style.css';
 
 const todoListUl = document.querySelector('.todo-list');
 const todoInput = document.querySelector('.todo-input');
+
+const clearElement = (element) => {
+  while (element.firstChild) {
+    element.removeChild(element.lastChild);
+  }
+};
+
+const renderTodos = () => {
+  clearElement(todoListUl);
+
+  todoListObj.forEach(({ index, description, completed }) => {
+    const checked = completed ? 'checked' : '';
+    const li = document.createElement('li');
+    li.classList.add('todo-item');
+    li.setAttribute('data-todo-id', index);
+
+    li.innerHTML = `
+      <input type="checkbox" name="completed" ${checked} />
+      <input type="text" name="description" value="${description}">
+      <ion-icon name="ellipsis-vertical-outline" class="move-btn"></ion-icon>
+      <ion-icon name="trash-outline" class="delete-btn"></ion-icon>
+    `;
+
+    todoListUl.appendChild(li);
+  });
+};
+
+const getTodoIndex = (element) => {
+  const parent = element.closest('li');
+  const { todoId } = parent.dataset;
+  return todoId;
+};
 
 todoInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter') {
@@ -43,37 +75,5 @@ todoListUl.addEventListener('keyup', (e) => {
     TodoList.update(todoId, todoDescription);
   }
 });
-
-const clearElement = (element) => {
-  while (element.firstChild) {
-    element.removeChild(element.lastChild);
-  }
-};
-
-const getTodoIndex = (element) => {
-  const parent = element.closest('li');
-  const todoId = parent.dataset.todoId;
-  return todoId;
-};
-
-const renderTodos = () => {
-  clearElement(todoListUl);
-
-  todoListObj.forEach(({ index, description, completed }) => {
-    const checked = completed ? 'checked' : '';
-    const li = document.createElement('li');
-    li.classList.add('todo-item');
-    li.setAttribute('data-todo-id', index);
-
-    li.innerHTML = `
-      <input type="checkbox" name="completed" ${checked} />
-      <input type="text" name="description" value="${description}">
-      <ion-icon name="ellipsis-vertical-outline" class="move-btn"></ion-icon>
-      <ion-icon name="trash-outline" class="delete-btn"></ion-icon>
-    `;
-
-    todoListUl.appendChild(li);
-  });
-};
 
 renderTodos();

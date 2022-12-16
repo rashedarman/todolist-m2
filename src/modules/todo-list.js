@@ -1,4 +1,4 @@
-import { saveTodoObj, todoListObj } from './local-storage';
+import { saveTodoObj, todoListObj } from './local-storage.js';
 
 export function Todo(description, completed = false) {
   this.index = todoListObj.length + 1;
