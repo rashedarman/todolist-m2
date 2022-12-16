@@ -19,7 +19,7 @@ body {
   max-width: 36rem;
   margin: 5rem auto;
   border-radius: 3px;
-  box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .todo-header,
@@ -42,7 +42,7 @@ body {
   padding: 0.75rem;
 }
 
-.todo-form input[name='todo'] {
+.todo-input {
   outline: 0;
   border: 0;
   flex: 1;
@@ -60,19 +60,27 @@ body {
   align-items: center;
 }
 
-.todo-item input[type='checkbox'] {
+.todo-item input[name='completed'] {
   width: 1.1rem;
   height: 1.1rem;
   cursor: pointer;
 }
 
-.todo-item label {
+.todo-item input[name='description'] {
   flex: 1;
   margin-left: 0.75rem;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
 }
 
-.todo-item .move {
+.move-btn {
   cursor: move;
+}
+
+.delete-btn {
+  cursor: pointer;
+  display: none;
 }
 
 .clear-button {
@@ -86,4 +94,5 @@ body {
 
 .clear-button:hover {
   color: var(--clr-dark-30);
+  text-decoration: underline;
 }
