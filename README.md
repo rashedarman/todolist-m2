@@ -16,7 +16,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://rashedarman.github.io/todo-list-m2/dist/)
+- [Live Demo Link](https://rashedarman.github.io/todolist-m2/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
