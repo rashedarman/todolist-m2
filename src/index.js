@@ -60,6 +60,7 @@ todoInput.addEventListener('keydown', (e) => {
     const todo = new Todo(e.target.value);
     TodoList.add(todo);
 
+    e.target.value = '';
     renderTodos();
   }
 });
