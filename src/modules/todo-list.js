@@ -43,17 +43,3 @@ export class TodoList {
     todoListObj.sort((todo1, todo2) => todo1.index - todo2.index);
   }
 }
-
-export class TestTodo {
-  // for tests only (this don't interact with actual client or localStorage)
-  static clearTodos() {
-    todoListObj.forEach((_, index) => {
-      todoListObj.splice(index, 1);
-    });
-  }
-
-  static addTodo(description) {
-    const todo = new Todo(description);
-    todoListObj.push(todo);
-  }
-}

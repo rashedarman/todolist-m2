@@ -4,9 +4,20 @@
 
 // Arrange
 import { todoListObj } from './local-storage.js';
-import { TestTodo, Todo, TodoList } from './todo-list.js';
+import { Todo, TodoList } from './todo-list.js';
 
 // Act
+
+const clearTodos = () => {
+  todoListObj.forEach((_, index) => {
+    todoListObj.splice(index, 1);
+  });
+};
+
+const addTodo = (description) => {
+  const todo = new Todo(description);
+  todoListObj.push(todo);
+};
 
 // Assert
 describe('Add & Remove', () => {
@@ -24,12 +35,12 @@ describe('Add & Remove', () => {
     const todoItems = document.querySelectorAll('.todo-item');
     expect(todoItems).toHaveLength(todoListObj.length);
 
-    TestTodo.clearTodos();
+    clearTodos();
   });
 
   test('Remove a todo', () => {
-    TestTodo.addTodo('todo 1');
-    TestTodo.addTodo('todo 2');
+    addTodo('todo 1');
+    addTodo('todo 2');
 
     const firstIndex = 1;
     TodoList.remove(firstIndex);
