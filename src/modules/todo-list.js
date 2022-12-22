@@ -4,6 +4,7 @@ export function Todo(description, completed = false) {
   this.index = todoListObj.length + 1;
   this.description = description;
   this.completed = completed;
+  return this;
 }
 
 export class TodoList {

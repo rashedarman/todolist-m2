@@ -14,9 +14,10 @@ const clearTodos = () => {
   });
 };
 
-const addTodo = (description) => {
-  const todo = new Todo(description);
+const addTodo = (description, completed = false) => {
+  const todo = new Todo(description, completed);
   todoListObj.push(todo);
+  return todo;
 };
 
 // Assert
@@ -39,11 +40,10 @@ describe('Add & Remove', () => {
   });
 
   test('Remove a todo', () => {
-    addTodo('todo 1');
+    const todo1 = addTodo('todo 1');
     addTodo('todo 2');
 
-    const firstIndex = 1;
-    TodoList.remove(firstIndex);
+    TodoList.remove(todo1.index);
 
     document.body.innerHTML = '';
 
