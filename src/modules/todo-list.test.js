@@ -59,3 +59,47 @@ describe('Add & Remove', () => {
     expect(todoListObj.length).toBe(1);
   });
 });
+
+describe('Edit, Toggle status and Clear completed', () => {
+  test('Edit a todo description', () => {
+    const todo = addTodo('todo 1');
+    const newDescription = 'new todo description';
+
+    TodoList.update(todo.index, newDescription);
+
+    expect(todo.description).toEqual(newDescription);
+
+    clearTodos();
+  });
+
+  test('Update completed status', () => {
+    const completedTodo = addTodo('todo 1', true);
+    const pendingTodo = addTodo('todo 2');
+
+    TodoList.toggleCompleted(completedTodo.index);
+    TodoList.toggleCompleted(pendingTodo.index);
+
+    expect(completedTodo.completed).toBe(false);
+    expect(pendingTodo.completed).toBe(true);
+
+    clearTodos();
+  });
+
+  test('Clear all completed', () => {
+    addTodo('todo 1', true);
+    addTodo('todo 2', true);
+    addTodo('todo 3');
+
+    // we take all the completed todos
+    const completedTodos = todoListObj.filter((todo) => todo.completed);
+
+    // loop through and remove each todo
+    completedTodos.forEach((todo) => {
+      const index = todoListObj.indexOf(todo);
+      todoListObj.splice(index, 1);
+    });
+
+    // We're checking that there's no completed todos
+    expect(todoListObj.filter((todo) => todo.completed === 0)).toHaveLength(0);
+  });
+});
