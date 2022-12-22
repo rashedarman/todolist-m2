@@ -86,8 +86,8 @@ describe('Edit, Toggle status and Clear', () => {
     // test dom changes
     renderTodos();
 
-    const todoEl = document.querySelector(`[data-todo-id="${todo.index}"]`);
-    const todoDescription = todoEl.querySelector('input[name="description"');
+    const todoElement = document.querySelector(`[data-todo-id="${todo.index}"]`);
+    const todoDescription = todoElement.querySelector('input[name="description"');
 
     expect(todoDescription.getAttribute('value')).toBe(newDescription);
 
@@ -125,9 +125,9 @@ describe('Edit, Toggle status and Clear', () => {
   });
 
   test('Clear all completed', () => {
-    addTodo('todo 1', true);
-    addTodo('todo 2', true);
-    addTodo('todo 3');
+    addTodo('todo1', true);
+    addTodo('todo2', true);
+    addTodo('todo3');
 
     // we take all the completed todos
     const completedTodos = todoListObj.filter((todo) => todo.completed);
