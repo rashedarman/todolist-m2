@@ -40,22 +40,20 @@ const renderTodos = () => {
 
 // Assert
 
-describe('Add & Remove', () => {
+describe('Add and Remove', () => {
   test('Add a todo', () => {
     const todo = new Todo('todo 1');
     TodoList.add(todo);
     expect(todoListObj).toContain(todo);
 
-    todoListObj.forEach(() => {
-      const li = document.createElement('li');
-      li.classList.add('todo-item');
-      document.body.appendChild(li);
-    });
-
+    // test dom changes
+    renderTodos();
     const todoItems = document.querySelectorAll('.todo-item');
     expect(todoItems).toHaveLength(todoListObj.length);
 
+    // cleanup
     clearTodos();
+    document.body.innerHTML = '';
   });
 
   test('Remove a todo', () => {
@@ -64,22 +62,20 @@ describe('Add & Remove', () => {
 
     TodoList.remove(todo1.index);
 
-    document.body.innerHTML = '';
-
-    todoListObj.forEach(() => {
-      const li = document.createElement('li');
-      li.classList.add('todo-item');
-      document.body.appendChild(li);
-    });
-
+    // test dom changes
+    renderTodos();
     const todoItems = document.querySelectorAll('.todo-item');
     expect(todoItems).toHaveLength(todoListObj.length);
 
     expect(todoListObj.length).toBe(1);
+
+    // cleanup
+    clearTodos();
+    document.body.innerHTML = '';
   });
 });
 
-describe('Edit, Toggle status and Clear completed', () => {
+describe('Edit, Toggle status and Clear', () => {
   test('Edit a todo description', () => {
     const todo = addTodo('todo 1');
 
